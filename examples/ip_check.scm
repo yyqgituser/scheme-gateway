@@ -1,0 +1,8 @@
+(define (check ip)
+  (if (ip-address? ip)
+      (print (string-append ip " -> valid"))
+      (print (string-append ip " -> invalid"))))
+(check "192.168.1.1")
+(check "hello")
+(check "10.0.0.256")
+(check "8.8.8.8")

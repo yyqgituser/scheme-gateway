@@ -1,0 +1,7 @@
+(define x 42)
+(define y (+ x 8))
+(print y)
+(print (not #f))
+(print (not #t))
+(print (let ((a 10) (b 20)) (+ a b)))
+(print (begin (+ 1 2) (* 3 4)))

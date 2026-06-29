@@ -1,0 +1,25 @@
+parser: {
+  name: TinyScheme,
+  start: Program,
+  max_look: 1,
+  grammar_type: lrk,
+  debug: off,
+  productions: [
+    { name: ProgramExprs,   lhs: Program,   rhs: [ExprList] },
+    { name: ExprListAppend, lhs: ExprList,  rhs: [ExprList, Expr] },
+    { name: ExprListEmpty,  lhs: ExprList,  rhs: [] },
+    { name: ExprAtom,       lhs: Expr,      rhs: [Atom] },
+    { name: ExprList_,      lhs: Expr,      rhs: [LPAREN, Contents, RPAREN] },
+    { name: ContentsAppend, lhs: Contents,  rhs: [Contents, Expr] },
+    { name: ContentsEmpty,  lhs: Contents,  rhs: [] },
+    { name: AtomInt,        lhs: Atom,      rhs: [INTEGER] },
+    { name: AtomStr,        lhs: Atom,      rhs: [STRING] },
+    { name: AtomSym,        lhs: Atom,      rhs: [SYMBOL] },
+    { name: AtomTrue,       lhs: Atom,      rhs: [TRUE] },
+    { name: AtomFalse,      lhs: Atom,      rhs: [FALSE] },
+    { name: AtomNil,        lhs: Atom,      rhs: [NIL] }
+  ],
+  outputs: [
+    { language: rust }
+  ]
+}
