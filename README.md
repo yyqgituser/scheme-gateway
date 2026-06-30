@@ -100,6 +100,22 @@ Client                    Gateway (8080)                         Auth Server (90
   │                           │                                          │
 ```
 
+## Why Rust + DSL
+
+Traditional API gateways often embed a scripting language (typically Lua) inside a C-based HTTP server (Nginx). This is proven at scale but has structural limitations:
+
+| | Rust + DSL | Nginx + Lua |
+|---|---|---|
+| **Host language** | Rust — compile-time memory safety | C — manual memory management |
+| **GC pauses** | None (Rust ownership) | Lua GC, incremental but present |
+| **Async model** | tokio async/await, native to language | C-level coroutine yield, invisible to script |
+| **Deployment** | Single static binary | Nginx + scripting runtime + library ecosystem |
+| **Language evolution** | Self-owned DSL, evolves with project needs | Tied to third-party scripting language release cycle |
+| **JIT backend** | LLVM — industrial optimizer, actively maintained | Scripting language JIT, limited evolution |
+| **Plugin isolation** | DSL has no capabilities unless explicitly granted | Script can access filesystem, network, OS by default |
+
+**Trade-offs**: This is a proof-of-concept. Traditional Nginx + Lua stacks are battle-tested at scale with rich ecosystems. This project demonstrates the architectural direction, not production readiness.
+
 ### What Rust Does vs What DSL Does
 
 ```
