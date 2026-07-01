@@ -113,6 +113,7 @@ Traditional API gateways often embed a scripting language (typically Lua) inside
 | **Language evolution** | Self-owned DSL, evolves with project needs | Tied to third-party scripting language release cycle |
 | **JIT backend** | LLVM — industrial optimizer, actively maintained | Scripting language JIT, limited evolution |
 | **Plugin isolation** | DSL has no capabilities unless explicitly granted | Script can access filesystem, network, OS by default |
+| **Ecosystem** | DSL builtins backed by Rust crates (tokio, reqwest, rustls, ...) | Dedicated scripting libraries, limited reuse outside gateway |
 
 **Trade-offs**: This is a proof-of-concept. Traditional Nginx + Lua stacks are battle-tested at scale with rich ecosystems. This project demonstrates the architectural direction, not production readiness.
 
