@@ -360,4 +360,4 @@ set LLVM_SYS_181_PREFIX=<LLVM18_INSTALL_DIR>     # Windows
 
 ## Prior Art
 
-**tiny** — A mini-C language compiler implemented in C++ with self-implemented lexer/parser generators, LLVM backend, custom linker and loader. scheme-gateway reuses the Rust output of the same LSG/LRPG tools, extending the foundation to a dynamically-typed DSL with async HTTP capabilities.
+**tiny** — A mini-C language compiler implemented in C++ with self-implemented lexer/parser generators, LLVM backend, custom linker and loader. 
