@@ -341,6 +341,10 @@ The `--jit` flag compiles DSL code to native machine code via LLVM's ORC JIT eng
 | Lambda / closures | ✅ | — |
 | http-get / respond | ✅ | — |
 
+## Limitations
+
+The JIT compiler supports pure computation only — integer arithmetic, comparisons, conditionals, and recursion are compiled to native machine code via LLVM. Functions that involve async I/O (e.g., `http-get`) run in the async tree-walking interpreter. The two coexist at the function boundary: an interpreter-driven `on-request` handler can call JIT-compiled pure functions, but async and JIT cannot be mixed within a single function. Compiling async operations to native code would require generating state machines at the machine code level — the same problem LuaJIT solves by falling back to its interpreter when a trace hits a coroutine yield.
+
 ## Environment Setup
 
 ### Rust
